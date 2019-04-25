@@ -16,7 +16,9 @@ class OctConv(torch.nn.Module):
     self.hf_in = ch_in - self.lf_in
     self.lf_out = max(1, int(self.alpha_out * ch_out))
     self.hf_out = ch_out - self.lf_out
-
+    
+    padding = (kernel_size - stride) // 2
+    
     print('\nalpha: ', (self.alpha_in, self.alpha_out), 
           '\nch_in_hf: ', self.hf_in, 
           '\nch_in_lf: ', self.lf_in, 
